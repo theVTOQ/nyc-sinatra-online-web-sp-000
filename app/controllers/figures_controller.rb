@@ -9,8 +9,6 @@ class FiguresController < ApplicationController
     @landmarks = Landmark.all
     @titles = Title.all
 
-    binding.pry
-
     erb :"/figures/new"
   end
 
