@@ -12,9 +12,10 @@ class FiguresController < ApplicationController
     erb :"/figures/new"
   end
 
-  get '/figures/:slug' do
-    @figure = Figure.find_by_slug(params[:slug])
-
+  get '/figures/:id' do
+    #@figure = Figure.find_by_slug(params[:slug])
+    @figure = Figure.find_by_slug(params[:id])
+    
     erb :"/figures/show"
   end
 
