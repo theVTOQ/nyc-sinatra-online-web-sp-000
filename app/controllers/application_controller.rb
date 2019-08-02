@@ -7,4 +7,8 @@ class ApplicationController < Sinatra::Base
   get '/' do
     erb :"application/index"
   end
+
+  get '/titles' do
+    erb :"application/all_titles"
+  end
 end

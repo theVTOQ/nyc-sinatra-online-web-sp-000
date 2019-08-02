@@ -1,22 +1,23 @@
 class FiguresController < ApplicationController
-  set :views, proc { File.join(root, '../views/figures/') }
   get '/figures' do
     @figures = Figure.all
 
-    erb :all
+    erb :"/figures/all"
   end
 
   get '/figures/new' do
     @landmarks = Landmark.all
     @titles = Title.all
 
-    erb :new
+    binding.pry
+
+    erb :"/figures/new"
   end
 
   get '/figures/:slug' do
     @figure = Figure.find_by_slug(params[:slug])
 
-    erb :show
+    erb :"/figures/show"
   end
 
   get '/figures/:slug/edit' do
@@ -24,17 +25,17 @@ class FiguresController < ApplicationController
     @titles = Title.all
     @landmarks = Landmark.all
 
-    erb :edit
+    erb :"/figures/edit"
   end
 
   post '/figures' do
     figure = Figure.create(params["figure"])
-    binding.pry
-    if params.key?("title")
+
+    if !!params["title"]["name"]
       figure.titles << Title.new(params["title"])
     end
 
-    if params.key?("landmark")
+    if !!params["title"]["landmark"]
       figure.landmarks << Landmark.new(name: params["landmark"]["name"])
     end
     figure.save
