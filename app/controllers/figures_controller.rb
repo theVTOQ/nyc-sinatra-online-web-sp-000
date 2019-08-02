@@ -15,7 +15,7 @@ class FiguresController < ApplicationController
   get '/figures/:id' do
     #@figure = Figure.find_by_slug(params[:slug])
     @figure = Figure.find_by_slug(params[:id])
-    
+
     erb :"/figures/show"
   end
 
