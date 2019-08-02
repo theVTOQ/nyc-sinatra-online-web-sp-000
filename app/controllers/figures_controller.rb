@@ -35,7 +35,7 @@ class FiguresController < ApplicationController
       figure.titles << Title.new(params["title"])
     end
 
-    if !!params["title"]["landmark"]
+    if !!params["landmark"]["name"]
       figure.landmarks << Landmark.new(name: params["landmark"]["name"])
     end
     figure.save
