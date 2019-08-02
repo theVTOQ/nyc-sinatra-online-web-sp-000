@@ -32,6 +32,6 @@ class LandmarksController < ApplicationController
     landmark.update(params["landmark"])
     landmark.save
 
-    redirect "/landmarks/#{new_landmark.id}"
+    redirect "/landmarks/#{landmark.id}"
   end
 end
