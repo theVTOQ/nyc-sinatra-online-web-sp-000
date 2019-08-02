@@ -20,4 +20,10 @@ class LandmarksController < ApplicationController
 
     erb :"/landmarks/show"
   end
+
+  post '/landmarks' do
+    new_landmark = Landmark.create(params["landmark"])
+
+    redirect "/landmarks/#{new_landmark.id}"
+  end
 end
