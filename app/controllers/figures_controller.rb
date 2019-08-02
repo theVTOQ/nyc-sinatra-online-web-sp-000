@@ -43,7 +43,7 @@ class FiguresController < ApplicationController
     redirect "/figures/#{figure.id}"
   end
 
-  patch '/figures/:slug' do
+  patch '/figures/:id' do
     figure = Figure.find_by_slug(params[:slug])
     figure.update(params["figure"])
     if !!params["title"]
@@ -55,6 +55,6 @@ class FiguresController < ApplicationController
     end
     figure.save
 
-    redirect "/figures/#{figure.slug}"
+    redirect "/figures/#{figure.id}"
   end
 end
