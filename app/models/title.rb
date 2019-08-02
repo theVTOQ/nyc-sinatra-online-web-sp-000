@@ -1,7 +1,7 @@
 class Title < ActiveRecord::Base
   # add relationships
-  has_many :figure_titles
-  has_many :figures, through: :figure_titles
+  has_many :figure_titles, :dependent => :destroy
+  has_many :figures, through: :figure_titles, :dependent => :destroy
 
   include ApplicationRecord
 end
