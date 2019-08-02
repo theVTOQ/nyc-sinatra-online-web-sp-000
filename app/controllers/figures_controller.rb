@@ -40,7 +40,7 @@ class FiguresController < ApplicationController
     end
     figure.save
 
-    redirect "/figures/#{figure.slug}"
+    redirect "/figures/#{figure.id}"
   end
 
   patch '/figures/:slug' do
