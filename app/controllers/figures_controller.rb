@@ -9,19 +9,19 @@ class FiguresController < ApplicationController
     @landmarks = Landmark.all
     @titles = Title.all
 
-    binding.pry
-
     erb :"/figures/new"
   end
 
-  get '/figures/:slug' do
-    @figure = Figure.find_by_slug(params[:slug])
+  get '/figures/:id' do
+    #@figure = Figure.find_by_slug(params[:slug])
+    @figure = Figure.find(params[:id])
 
     erb :"/figures/show"
   end
 
-  get '/figures/:slug/edit' do
-    @figure = Figure.find_by_slug(params[:slug])
+  get '/figures/:id/edit' do
+    #@figure = Figure.find_by_slug(params[:slug])
+    @figure = Figure.find(params[:id])
     @titles = Title.all
     @landmarks = Landmark.all
 
@@ -35,16 +35,17 @@ class FiguresController < ApplicationController
       figure.titles << Title.new(params["title"])
     end
 
-    if !!params["title"]["landmark"]
-      figure.landmarks << Landmark.new(name: params["landmark"]["name"])
+    if !!params["landmark"]["name"]
+      figure.landmarks << Landmark.new(params["landmark"])
     end
     figure.save
 
-    redirect "/figures/#{figure.slug}"
+    redirect "/figures/#{figure.id}"
   end
 
-  patch '/figures/:slug' do
-    figure = Figure.find_by_slug(params[:slug])
+  patch '/figures/:id' do
+    #figure = Figure.find_by_slug(params[:slug])
+    figure = Figure.find(params[:id])
     figure.update(params["figure"])
     if !!params["title"]
       figure.titles << Title.create(params["title"])
@@ -55,6 +56,6 @@ class FiguresController < ApplicationController
     end
     figure.save
 
-    redirect "/figures/#{figure.slug}"
+    redirect "/figures/#{figure.id}"
   end
 end

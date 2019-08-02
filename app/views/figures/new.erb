@@ -17,7 +17,7 @@
   <h2>Select Landmarks:</h2>
   <% @landmarks.each do |landmark| %>
     <label for="landmark_<%= landmark.id %>"><%= landmark.name %></label>
-    <input type="radio" id="landmark_<%= landmark.id %>" name="figure[landmark_ids][]" value=<%= landmark.id %>>
+    <input type="checkbox" id="landmark_<%= landmark.id %>" name="figure[landmark_ids][]" value=<%= landmark.id %>>
   <% end %>
 
   <h2>Create a new Landmark:</h2>
